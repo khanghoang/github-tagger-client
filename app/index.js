@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ListRepo from './containers/ListTags';
 
 // eslint-disable-next-line
 export default class App extends Component {
@@ -13,6 +14,7 @@ export default class App extends Component {
         }}
       >
         <div>Hello world 201</div>
+        <ListRepo />
       </div>
     );
   }
