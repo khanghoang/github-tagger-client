@@ -13,8 +13,7 @@ export default class App extends Component {
           userSelect: 'none',
         }}
       >
-        <div>Hello world 201</div>
-        <ListRepo />
+        <div>Hello world 202</div>
       </div>
     );
   }
