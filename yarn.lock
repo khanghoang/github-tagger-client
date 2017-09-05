@@ -2850,6 +2850,10 @@ redux-api-call@^1.0.5:
     redux-api-call-adapter-fetch "^1.0.0"
     redux-api-call-adapter-json "^1.0.0"
 
+redux-observable@^0.16.0:
+  version "0.16.0"
+  resolved "https://registry.yarnpkg.com/redux-observable/-/redux-observable-0.16.0.tgz#dc431d0f47a9c3af232639d6bdd70d80c1b620d9"
+
 redux-persist@^4.9.1:
   version "4.9.1"
   resolved "https://registry.yarnpkg.com/redux-persist/-/redux-persist-4.9.1.tgz#271fa31d1c782ebf9082fb5174e829db24faf59e"
@@ -2981,6 +2985,12 @@ rimraf@^2.2.8, rimraf@^2.5.2, rimraf@^2.5.4:
 rxjs@^5.1.1:
   version "5.4.2"
   resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.2.tgz#2a3236fcbf03df57bae06fd6972fd99e5c08fcf7"
+  dependencies:
+    symbol-observable "^1.0.1"
+
+rxjs@^5.4.3:
+  version "5.4.3"
+  resolved "https://registry.yarnpkg.com/rxjs/-/rxjs-5.4.3.tgz#0758cddee6033d68e0fd53676f0f3596ce3d483f"
   dependencies:
     symbol-observable "^1.0.1"
 

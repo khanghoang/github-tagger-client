@@ -27,7 +27,9 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-api-call": "^1.0.5",
+    "redux-observable": "^0.16.0",
     "redux-persist": "^4.9.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "rxjs": "^5.4.3"
   }
 }
