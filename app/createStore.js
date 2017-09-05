@@ -1,18 +1,14 @@
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import {
   middleware as apiMiddleware,
-  reducers as apiReducers,
 } from 'redux-api-call';
 import thunkMiddleware from 'redux-thunk';
-// import rootReducer from './rootReducer';
-
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
+import rootReducer from './rootReducer';
 
 export const createReduxStore = () => {
+  const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
   return createStore(
-    combineReducers({
-      ...apiReducers,
-    }),
+    rootReducer,
     {},
     composeEnhancers(applyMiddleware(thunkMiddleware, apiMiddleware))
   );
