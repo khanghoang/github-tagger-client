@@ -4,6 +4,11 @@ import { enableLiveReload } from 'electron-compile';
 import electron from 'electron';
 import auth from 'electron-auth';
 import fetch from 'node-fetch';
+import installExtension, {
+  REACT_DEVELOPER_TOOLS,
+  REDUX_DEVTOOLS,
+  REACT_PERF,
+} from 'electron-devtools-installer';
 /* eslint-enable */
 
 enableLiveReload({ strategy: 'react-hmr' });
@@ -33,6 +38,19 @@ app.on('ready', () => {
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
 
+  installExtension(REACT_DEVELOPER_TOOLS)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log('An error occurred: ', err));
+
+  installExtension(REDUX_DEVTOOLS)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log('An error occurred: ', err));
+
+  installExtension(REACT_PERF)
+    .then(name => console.log(`Added Extension:  ${name}`))
+    .catch(err => console.log('An error occurred: ', err));
+
+
   var opt = {
     // client_id: 'a12166a8942e05cd1c4f',
     // client_secret: '20ba4d0d84fb9725b1d3f7ec324a1f53869fcfb5',
@@ -45,12 +63,6 @@ app.on('ready', () => {
     auth.providers.github,
     { ...opt, scope: 'user:email' },
     async (error, token) => {
-      console.log(
-        'token: ',
-        JSON.stringify({
-          token,
-        })
-      );
       const rawData = await fetch(
         'https://github-tagger.herokuapp.com/login/github',
         {
@@ -63,7 +75,7 @@ app.on('ready', () => {
       );
       const receivedToken = await rawData.json();
 
-      console.log('receivedToken: ', receivedToken);
+      // console.log('receivedToken: ', receivedToken);
 
       const repos = await fetch(
         'https://github-tagger.herokuapp.com/getRepo?tag=',
@@ -76,7 +88,7 @@ app.on('ready', () => {
         }
       ).then(res => res.json())
 
-      console.log('token: ', repos);
+      // console.log('token: ', repos);
     }
   );
 });

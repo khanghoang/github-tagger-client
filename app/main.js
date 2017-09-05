@@ -11,8 +11,15 @@ const render = () => {
   // We also need to wrap our app in the AppContainer class
   // eslint-disable-next-line
   const MyApp = require('./app').default;
-  ReactDOM.render(<AppContainer><Main /></AppContainer>, document.getElementById('app'));
-}
+  ReactDOM.render(
+    <AppContainer>
+      <Main />
+    </AppContainer>,
+    document.getElementById('app')
+  );
+};
 
 render();
-if (module.hot) { module.hot.accept(render); }
+if (module.hot) {
+  module.hot.accept(render);
+}
