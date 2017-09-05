@@ -34,8 +34,6 @@ export default class App extends Component {
         const receivedToken = await rawData.json();
         store.dispatch(storeGithubToken(receivedToken.token));
 
-        // console.log('receivedToken: ', receivedToken);
-
         const repos = await fetch(
           'https://github-tagger.herokuapp.com/getRepo?tag=',
           {
