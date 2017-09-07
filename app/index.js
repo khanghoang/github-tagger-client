@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import auth from 'electron-auth';
 
 import { store } from './createStore';
+import ListRepos from './containers/ListTags';
 
 // eslint-disable-next-line
 export default class App extends Component {
@@ -20,7 +21,7 @@ export default class App extends Component {
             userSelect: 'none',
           }}
         >
-          <div>Hello world 202</div>
+          <ListRepos />
         </div>
       </Provider>
     );

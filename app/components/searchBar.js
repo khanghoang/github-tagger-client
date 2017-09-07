@@ -1,22 +1,30 @@
-import { withHandlers, compose } from 'recompose';
-import React from 'react';
+import React, { PropTypes } from 'react';
+import { setPropTypes, compose, withProps, withHandlers } from 'recompose';
+import fuzzy from 'fuzzy';
 
-const GLink = ({ onClick, children }) => (
-  <button
-    style={{ textDecoration: 'underline', cursor: 'pointer' }}
-    onClick={onClick}
-  >
-    {children}
-  </button>
+const searchBar = ({ onChange }) => (
+  <input onChange={onChange} style={{ width: '300px' }} type="text"></input>
 );
 
 const enhance = compose(
-  withHandlers({
-    onClick: ({ url }) =>
-      () => {
-        console.log(`open chrome ${url}`);
+  withProps(() => ({
+    searchOptions: {
+      pre: '<',
+      post: '>',
+      extract: (repo) => {
+        const tagsStr = repo.tags.reduce((acc, t) => (
+          `${acc} ${t.name}`
+        ), '');
+        return `${repo.name} ${tagsStr}`;
       },
-  })
+    },
+  })),
+  withHandlers({
+    onChange: ({ repos, onResults, searchOptions }) => e => {
+      const results = fuzzy.filter(e.target.value, repos, searchOptions);
+      onResults(results.map(r => r.original));
+    },
+  }),
 );
 
-export default enhance(GLink);
+export default enhance(searchBar);

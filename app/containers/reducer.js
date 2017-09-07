@@ -1,4 +1,5 @@
 import { makeFetchAction } from 'redux-api-call';
+import { getOr, flow } from 'lodash/fp';
 
 export const {
   dataSelector,
@@ -8,8 +9,8 @@ export const {
   return {
     endpoint: 'https://github-tagger.herokuapp.com/getRepo?tag=',
     method: 'GET',
-    headers: getState => {
-      const token = getState().session;
+    headers: state => {
+      const token = state.session;
       return {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${token}`,
@@ -17,3 +18,5 @@ export const {
     },
   };
 });
+
+export const reposSelector = flow(dataSelector, getOr([], 'data'));

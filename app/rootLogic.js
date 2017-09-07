@@ -1,5 +1,6 @@
 import auth from 'electron-auth';
 import { storeGithubToken } from './sessionReducer';
+import { actionCreator as fetchRepos } from './containers/reducer';
 
 export default (action, { getState, dispatch }) =>
   action.ofType('persist/REHYDRATE').map(() => {
@@ -29,6 +30,7 @@ export default (action, { getState, dispatch }) =>
           );
           const receivedToken = await rawData.json();
           dispatch(storeGithubToken(receivedToken.token));
+          dispatch(fetchRepos());
           // const repos = await fetch(
           //   'https://github-tagger.herokuapp.com/getRepo?tag=',
           //   {
@@ -41,5 +43,7 @@ export default (action, { getState, dispatch }) =>
           // ).then(res => res.json());
         }
       );
+    } else {
+      dispatch(fetchRepos());
     }
   });

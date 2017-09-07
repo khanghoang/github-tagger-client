@@ -1,6 +1,7 @@
 /* eslint-disable */
 import { app, BrowserWindow } from 'electron';
 import { enableLiveReload } from 'electron-compile';
+import menubar from 'menubar';
 import electron from 'electron';
 import fetch from 'node-fetch';
 import installExtension, {
@@ -12,13 +13,22 @@ import installExtension, {
 
 enableLiveReload({ strategy: 'react-hmr' });
 
-//Import app
-// const mb = menubar({
-//   index: `file://${__dirname}/index.html`,
-// });
-//
-// mb.on('ready', function ready () {
+// Import app
+const mb = menubar({
+  index: `file://${__dirname}/index.html`,
+});
+
+// mb.on('ready', async () => {
 //   console.log('app is ready')
+//   await installExtension(REACT_DEVELOPER_TOOLS)
+//     .then(name => console.log(`Added Extension:  ${name}`))
+//     .catch(err => console.log('An error occurred: ', err))
+//   await installExtension(REDUX_DEVTOOLS)
+//     .then(name => console.log(`Added Extension:  ${name}`))
+//     .catch(err => console.log('An error occurred: ', err))
+//   await installExtension(REACT_PERF)
+//     .then(name => console.log(`Added Extension:  ${name}`))
+//     .catch(err => console.log('An error occurred: ', err))
 // })
 
 // eslint-disable-next-line immutable/no-let

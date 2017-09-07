@@ -1,21 +1,21 @@
 import React from 'react';
 import { withHandlers, compose } from 'recompose';
+import electronOpenLinkInBrowser from 'electron-open-link-in-browser';
+import { shell } from 'electron';
 
-const GLink = ({ onClick, children }) => (
+const GLink = ({ url, onClick, children }) =>
   <button
     style={{ textDecoration: 'underline', cursor: 'pointer' }}
-    onClick={onClick}
+    onClick={() => onClick(url)}
   >
     {children}
-  </button>
-);
+  </button>;
 
 const enhance = compose(
   withHandlers({
-    onClick: ({ url }) =>
-      () => {
-        console.log(`open chrome ${url}`);
-      },
+    onClick: (url) => {
+      shell.openExternal(url);
+    },
   })
 );
 
