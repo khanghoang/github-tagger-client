@@ -13,7 +13,7 @@ const GLink = ({ url, onClick, children }) =>
 
 const enhance = compose(
   withHandlers({
-    onClick: (url) => {
+    onClick: ({ url }) => {
       shell.openExternal(url);
     },
   })
