@@ -14,10 +14,10 @@ import installExtension, {
 enableLiveReload({ strategy: 'react-hmr' });
 
 // Import app
-const mb = menubar({
-  index: `file://${__dirname}/index.html`,
-});
-
+// const mb = menubar({
+//   index: `file://${__dirname}/index.html`,
+//   icon: './icons/icon.png',
+// });
 // mb.on('ready', async () => {
 //   console.log('app is ready')
 //   await installExtension(REACT_DEVELOPER_TOOLS)
