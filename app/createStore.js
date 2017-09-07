@@ -1,13 +1,13 @@
 import { middleware as apiMiddleware } from 'redux-api-call';
-import { createEpicMiddleware } from 'redux-observable';
+import { makeLogicMiddleware } from 'redux-ittt';
 import { createStore, applyMiddleware, compose } from 'redux';
 import { persistStore, autoRehydrate } from 'redux-persist';
 import thunkMiddleware from 'redux-thunk';
 
-import rootEpic from './rootEpic';
+import rootLogic from './rootLogic';
 import rootReducer from './rootReducer';
 
-const epicMiddleware = createEpicMiddleware(rootEpic);
+const logicMiddleware = makeLogicMiddleware(rootLogic);
 
 export const createReduxStore = () => {
   const composeEnhancers =
@@ -16,7 +16,7 @@ export const createReduxStore = () => {
     rootReducer,
     {},
     composeEnhancers(
-      applyMiddleware(thunkMiddleware, apiMiddleware, epicMiddleware),
+      applyMiddleware(thunkMiddleware, apiMiddleware, logicMiddleware),
       autoRehydrate()
     )
   );

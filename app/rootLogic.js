@@ -1,9 +1,8 @@
-import { combineEpics } from 'redux-observable';
-
+import auth from 'electron-auth';
 import { storeGithubToken } from './sessionReducer';
 
-const loginEpic = (action$, { getState, dispatch }) =>
-  action$.filter('persist/REHYDRATE').map(() => {
+export default (action, { getState, dispatch }) =>
+  action.ofType('persist/REHYDRATE').map(() => {
     const token = getState().session;
     if (!token) {
       const opt = {
@@ -44,5 +43,3 @@ const loginEpic = (action$, { getState, dispatch }) =>
       );
     }
   });
-
-export default combineEpics();

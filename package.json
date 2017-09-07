@@ -9,9 +9,11 @@
     "electron-prebuilt-compile": "^1.6.11",
     "eslint-plugin-react": "^7.1.0",
     "eslint-plugin-react-native": "^3.0.1",
+    "jest": "20",
     "menubar": "^5.2.3",
     "prettier": "^1.5.3",
-    "react-hot-loader": "next"
+    "react-hot-loader": "next",
+    "redux-mock-store": "^1.2.3"
   },
   "scripts": {
     "start": "electron ."
@@ -27,9 +29,8 @@
     "redux": "^3.7.2",
     "redux-actions": "^2.2.1",
     "redux-api-call": "^1.0.5",
-    "redux-observable": "^0.16.0",
+    "redux-ittt": "0.0.4",
     "redux-persist": "^4.9.1",
-    "redux-thunk": "^2.2.0",
-    "rxjs": "^5.4.3"
+    "redux-thunk": "^2.2.0"
   }
 }
