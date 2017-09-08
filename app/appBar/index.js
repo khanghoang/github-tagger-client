@@ -23,6 +23,19 @@ const styles = {
     marginLeft: 12,
     marginRight: 20,
   },
+  button: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 20,
+    padding: '0 10px',
+    marginLeft: 15,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
+  },
+  label: {
+    textTransform: 'capitalize',
+  },
 };
 
 function ButtonAppBar(props) {
@@ -31,20 +44,16 @@ function ButtonAppBar(props) {
     <div className={classes.root}>
       <AppBar position="static">
         <Toolbar disableGutters>
-          <Typography
-            type="title"
-            color="inherit"
-            className={classes.flex}
+          <SearchInput
+            color="white"
             style={{
-              marginLeft: 15,
+              marginLeft: 20,
             }}
-          >
-            Github Tagger
-          </Typography>
-          <SearchInput />
+          />
           <Button
-            style={{
-              marginRight: 10,
+            classes={{
+              root: classes.button,
+              label: classes.label,
             }}
             color="contrast"
           >

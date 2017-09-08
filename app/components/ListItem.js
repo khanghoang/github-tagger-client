@@ -1,10 +1,13 @@
 import { ListItem, ListItemText } from 'material-ui/List';
+import { compose, withHandlers } from 'recompose';
 import { withStyles } from 'material-ui/styles';
 import Avatar from 'material-ui/Avatar';
 import ImageIcon from 'material-ui-icons/Image';
 import React from 'react';
-import Chips from '../tags';
 
+import { shell } from 'electron';
+
+import Chips from '../tags';
 import GLink from './GLink';
 
 const styles = theme => ({
@@ -15,7 +18,7 @@ const styles = theme => ({
   },
 });
 
-const RepoListItem = ({ repo: { tags: repoTags, name, _id: id } }) => {
+const RepoListItem = ({ repo: { tags: repoTags, name, _id: id }, onClick }) => {
   const [username, repoName] = name.split('/');
   const userLink = (
     <GLink url={`https://github.com/${username}`}>
@@ -30,7 +33,13 @@ const RepoListItem = ({ repo: { tags: repoTags, name, _id: id } }) => {
 
   return (
     <div>
-      <ListItem button>
+      <ListItem
+        button
+        onClick={() => {
+          const url = `https://github.com/${username}/${repoName}`;
+          onClick(url);
+        }}
+      >
         <Avatar>
           <ImageIcon />
         </Avatar>
@@ -41,4 +50,11 @@ const RepoListItem = ({ repo: { tags: repoTags, name, _id: id } }) => {
   );
 };
 
-export default withStyles(styles)(RepoListItem);
+export default compose(
+  withHandlers({
+    onClick: () => (url) => {
+      shell.openExternal(url);
+    },
+  }),
+  withStyles(styles)
+)(RepoListItem);

@@ -14,6 +14,7 @@ const styles = theme => ({
   },
   input: {
     margin: theme.spacing.unit,
+    color: '#ddd',
   },
 });
 
