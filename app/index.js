@@ -5,6 +5,7 @@ import auth from 'electron-auth';
 
 import { store } from './createStore';
 import ListRepos from './containers/ListTags';
+import AppBar from './appBar';
 
 // eslint-disable-next-line
 export default class App extends Component {
@@ -15,12 +16,10 @@ export default class App extends Component {
       <Provider store={store}>
         <div
           style={{
-            paddingTop: '30',
-            paddingLeft: '10',
-            paddingRight: '10',
             userSelect: 'none',
           }}
         >
+          <AppBar />
           <ListRepos />
         </div>
       </Provider>

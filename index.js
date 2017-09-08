@@ -42,7 +42,7 @@ app.on('ready', async () => {
   mainWindow = new BrowserWindow({
     width: 300,
     height: 400,
-    // titleBarStyle: 'hidden-inset',
+    titleBarStyle: 'hidden-inset',
   });
 
   mainWindow.loadURL(`file://${__dirname}/index.html`);
