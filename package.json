@@ -34,6 +34,7 @@
     "redux-api-call": "^1.0.5",
     "redux-ittt": "0.0.4",
     "redux-persist": "^4.9.1",
-    "redux-thunk": "^2.2.0"
+    "redux-thunk": "^2.2.0",
+    "reselect": "^3.0.1"
   }
 }

@@ -1,26 +1,21 @@
 /* eslint-disable */
-import React, { Component } from 'react';
-import { getOr } from 'lodash/fp';
-import { compose, lifecycle, branch, withState } from 'recompose';
+import { compose, withState } from 'recompose';
 import { connect } from 'react-redux';
+import React from 'react';
 
-import List from '../components/List';
-import SearchBar from '../components/searchBar';
+import {
+  getSearchedReposSelector,
+  searchKeywordSelector,
+} from '../searchBar/reducer';
 import { reposSelector } from './reducer';
+import List from '../components/List';
 
-const ListRepos = ({
-  repos = [],
-  searchResults = [],
-  setSearchResults,
-}) => {
+const ListRepos = ({ repos = [], searchRepos = [], keyword }) => {
   return (
     <div>
-      <SearchBar repos={repos} onResults={setSearchResults} />
-      {
-        searchResults.length > 0
-          ? <List repos={searchResults} />
-          : <List repos={repos} />
-      }
+      {keyword.length > 0
+        ? <List repos={searchRepos} />
+        : <List repos={repos} />}
     </div>
   );
 };
@@ -29,6 +24,8 @@ export default compose(
   connect(
     state => ({
       repos: reposSelector(state),
+      searchRepos: getSearchedReposSelector(state),
+      keyword: searchKeywordSelector(state),
     }),
     null
   ),

@@ -9,6 +9,7 @@ import Typography from 'material-ui/Typography';
 import Button from 'material-ui/Button';
 import IconButton from 'material-ui/IconButton';
 import MenuIcon from 'material-ui-icons/Menu';
+import SearchInput from '../searchBar';
 
 const styles = {
   root: {
@@ -29,15 +30,26 @@ function ButtonAppBar(props) {
   return (
     <div className={classes.root}>
       <AppBar position="static">
-        <Toolbar disableGutters >
+        <Toolbar disableGutters>
           <Typography
             type="title"
             color="inherit"
             className={classes.flex}
+            style={{
+              marginLeft: 15,
+            }}
           >
             Github Tagger
           </Typography>
-          <Button color="contrast">Login</Button>
+          <SearchInput />
+          <Button
+            style={{
+              marginRight: 10,
+            }}
+            color="contrast"
+          >
+            Add
+          </Button>
         </Toolbar>
       </AppBar>
     </div>
