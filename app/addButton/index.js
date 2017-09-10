@@ -26,7 +26,13 @@ function FloatingActionButtons(props) {
   const classes = props.classes;
   return (
     <div>
-      <Button fab color="primary" aria-label="add" className={classes.button}>
+      <Button
+        disableRipple
+        fab
+        color="primary"
+        aria-label="add"
+        className={classes.button}
+      >
         <AddIcon />
       </Button>
     </div>
