@@ -1,7 +1,7 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
 /* eslint-disable react/no-multi-comp */
 
-import { Input } from 'material-ui';
+import { Button, Input } from 'material-ui';
 import { compose } from 'recompose';
 import { connectModal } from '@khanghoang/redux-modal';
 import { withStyles } from 'material-ui/styles';
@@ -17,6 +17,17 @@ const styles = {
   avatar: {
     background: blue[100],
     color: blue[600],
+  },
+  button: {
+    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
+    borderRadius: 3,
+    border: 0,
+    color: 'white',
+    height: 20,
+    padding: '0 10px',
+    marginLeft: 15,
+    boxShadow: '0 3px 5px 2px rgba(255, 105, 135, .30)',
+    width: 40,
   },
 };
 
@@ -47,6 +58,9 @@ class SimpleDialog extends React.Component {
               'aria-label': 'Description',
             }}
           />
+          <Button onPress={() => {}} className={classes.button}>
+            Add
+          </Button>
         </div>
       </Dialog>
     );
