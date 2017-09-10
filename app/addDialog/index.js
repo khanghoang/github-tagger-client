@@ -2,7 +2,9 @@
 /* eslint-disable react/no-multi-comp */
 
 import { Button, Input } from 'material-ui';
+import { Field, getFormSyncErrors, reduxForm } from 'redux-form';
 import { compose } from 'recompose';
+import { connect } from 'react-redux';
 import { connectModal } from '@khanghoang/redux-modal';
 import { withStyles } from 'material-ui/styles';
 import Dialog, { DialogTitle } from 'material-ui/Dialog';
@@ -41,7 +43,13 @@ class SimpleDialog extends React.Component {
   };
 
   render() {
-    const { classes, onRequestClose, selectedValue, ...other } = this.props;
+    const {
+      isError,
+      classes,
+      onRequestClose,
+      selectedValue,
+      ...other
+    } = this.props;
 
     return (
       <Dialog onRequestClose={this.handleRequestClose} {...other}>
@@ -52,13 +60,24 @@ class SimpleDialog extends React.Component {
             paddingTop: 0,
           }}
         >
-          <Input
-            placeholder="Repo url"
-            inputProps={{
-              'aria-label': 'Description',
-            }}
+          <Field
+            name="repoName"
+            component={({ input: { value, onChange } }) =>
+              <Input
+                onChange={onChange}
+                value={value}
+                placeholder="Repo url"
+                error={isError}
+                inputProps={{
+                  'aria-label': 'Description',
+                }}
+              />}
           />
-          <Button onPress={() => {}} className={classes.button}>
+          <Button
+            disabled={isError}
+            onPress={() => {}}
+            className={classes.button}
+          >
             Add
           </Button>
         </div>
@@ -73,7 +92,27 @@ SimpleDialog.propTypes = {
   selectedValue: PropTypes.string,
 };
 
-const SimpleDialogWrapped = withStyles(styles)(SimpleDialog);
+const SimpleDialogWrapped = compose(
+  withStyles(styles),
+  reduxForm({
+    form: 'AddRepo',
+    validate: (values = {}) => {
+      const repoName = values.repoName || '';
+      let errors = {};
+      if (!repoName.startsWith('https://github.com/')) {
+        errors.repoName = 'The link is not github repo link';
+      }
+
+      return errors;
+    },
+  }),
+  connect(state => ({
+    isError: !!(
+      getFormSyncErrors('AddRepo')(state) &&
+      getFormSyncErrors('AddRepo')(state).repoName
+    ),
+  }))
+)(SimpleDialog);
 
 class SimpleDialogDemo extends React.Component {
   static defaultProps: {};
