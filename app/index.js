@@ -7,6 +7,7 @@ import { store } from './createStore';
 import ListRepos from './containers/ListTags';
 import AppBar from './appBar';
 import AddButton from './addButton';
+import AddDialog from './addDialog';
 
 // eslint-disable-next-line
 export default class App extends Component {
@@ -21,7 +22,7 @@ export default class App extends Component {
           }}
         >
           <AppBar />
-          <ListRepos />
+          <AddDialog />
           <AddButton />
         </div>
       </Provider>

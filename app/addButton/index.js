@@ -27,7 +27,6 @@ function FloatingActionButtons(props) {
   return (
     <div>
       <Button
-        disableRipple
         fab
         color="primary"
         aria-label="add"
