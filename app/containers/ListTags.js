@@ -12,7 +12,9 @@ import List from '../components/List';
 
 const ListRepos = ({ repos = [], searchRepos = [], keyword }) => {
   return (
-    <div>
+    <div style={{
+      paddingTop: 70,
+    }}>
       {keyword.length > 0
         ? <List repos={searchRepos} />
         : <List repos={repos} />}

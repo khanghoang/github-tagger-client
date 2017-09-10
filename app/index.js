@@ -6,6 +6,7 @@ import auth from 'electron-auth';
 import { store } from './createStore';
 import ListRepos from './containers/ListTags';
 import AppBar from './appBar';
+import AddButton from './addButton';
 
 // eslint-disable-next-line
 export default class App extends Component {
@@ -21,6 +22,7 @@ export default class App extends Component {
         >
           <AppBar />
           <ListRepos />
+          <AddButton />
         </div>
       </Provider>
     );

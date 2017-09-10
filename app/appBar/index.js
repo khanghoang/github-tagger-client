@@ -15,6 +15,8 @@ const styles = {
   root: {
     marginTop: 30,
     width: '100%',
+    position: 'fixed',
+    zIndex: 10,
   },
   flex: {
     flex: 1,
@@ -50,15 +52,6 @@ function ButtonAppBar(props) {
               marginLeft: 20,
             }}
           />
-          <Button
-            classes={{
-              root: classes.button,
-              label: classes.label,
-            }}
-            color="contrast"
-          >
-            Add
-          </Button>
         </Toolbar>
       </AppBar>
     </div>
