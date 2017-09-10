@@ -18,9 +18,8 @@ const styles = theme => ({
   row: {
     display: 'flex',
     justifyContent: 'left',
-    flexWrap: 'wrap',
     height: 50,
-    "overflow-y": "scroll",
+    overflowX: "scroll",
   },
 });
 
