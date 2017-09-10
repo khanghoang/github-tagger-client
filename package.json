@@ -25,6 +25,7 @@
     "make": "electron-forge make"
   },
   "dependencies": {
+    "@khanghoang/redux-modal": "^0.0.10",
     "electron-compile": "^6.4.1",
     "electron-open-link-in-browser": "^1.0.2",
     "fuzzy": "^0.1.3",

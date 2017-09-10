@@ -6,6 +6,9 @@ import { withStyles } from 'material-ui/styles';
 import Button from 'material-ui/Button';
 import AddIcon from 'material-ui-icons/Add';
 import ModeEditIcon from 'material-ui-icons/ModeEdit';
+import { open } from '@khanghoang/redux-modal';
+import { compose } from 'recompose';
+import { connect } from 'react-redux';
 
 const styles = theme => ({
   button: {
@@ -23,10 +26,11 @@ const styles = theme => ({
 });
 
 function FloatingActionButtons(props) {
-  const classes = props.classes;
+  const { classes, open } = props;
   return (
     <div>
       <Button
+        onClick={open}
         fab
         color="primary"
         aria-label="add"
@@ -42,4 +46,11 @@ FloatingActionButtons.propTypes = {
   classes: PropTypes.object.isRequired,
 };
 
-export default withStyles(styles)(FloatingActionButtons);
+export default compose(
+  withStyles(styles),
+  connect(null, dispatch => ({
+    open: () => {
+      dispatch(open('AddDialog'));
+    },
+  }))
+)(FloatingActionButtons);

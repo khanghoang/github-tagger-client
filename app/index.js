@@ -1,5 +1,6 @@
 import { Provider } from 'react-redux';
 import React, { Component } from 'react';
+import { ModalPortal } from '@khanghoang/redux-modal';
 
 import auth from 'electron-auth';
 
@@ -22,7 +23,8 @@ export default class App extends Component {
           }}
         >
           <AppBar />
-          <AddDialog />
+          <ListRepos />
+          <ModalPortal wrapComponent="div" />
           <AddButton />
         </div>
       </Provider>

@@ -6,6 +6,13 @@
   version "0.0.6"
   resolved "https://registry.yarnpkg.com/7zip/-/7zip-0.0.6.tgz#9cafb171af82329490353b4816f03347aa150a30"
 
+"@khanghoang/redux-modal@^0.0.10":
+  version "0.0.10"
+  resolved "https://registry.yarnpkg.com/@khanghoang/redux-modal/-/redux-modal-0.0.10.tgz#cca0154c2b717d41486e505470bfaf1937029f41"
+  dependencies:
+    lodash "^4.17.4"
+    react-redux "^5.0.6"
+
 "@paulcbetts/mime-db@~1.22.0":
   version "1.22.4"
   resolved "https://registry.yarnpkg.com/@paulcbetts/mime-db/-/mime-db-1.22.4.tgz#b8ff8e78087a40992990f702f8d9c65499be2ef1"

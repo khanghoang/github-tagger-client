@@ -1,17 +1,16 @@
 /* eslint-disable flowtype/require-valid-file-annotation */
 /* eslint-disable react/no-multi-comp */
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import { Input } from 'material-ui';
+import { compose } from 'recompose';
+import { connectModal } from '@khanghoang/redux-modal';
 import { withStyles } from 'material-ui/styles';
-import Button from 'material-ui/Button';
-import Avatar from 'material-ui/Avatar';
-import List, { ListItem, ListItemAvatar, ListItemText } from 'material-ui/List';
 import Dialog, { DialogTitle } from 'material-ui/Dialog';
-import PersonIcon from 'material-ui-icons/Person';
-import AddIcon from 'material-ui-icons/Add';
+import React from 'react';
 import Typography from 'material-ui/Typography';
 import blue from 'material-ui/colors/blue';
+
+import PropTypes from 'prop-types';
 
 const emails = ['username@gmail.com', 'user02@gmail.com'];
 const styles = {
@@ -35,35 +34,19 @@ class SimpleDialog extends React.Component {
 
     return (
       <Dialog onRequestClose={this.handleRequestClose} {...other}>
-        <DialogTitle>Set backup account</DialogTitle>
-        <div>
-          <List>
-            {emails.map(email =>
-              <ListItem
-                button
-                onClick={() => this.handleListItemClick(email)}
-                key={email}
-              >
-                <ListItemAvatar>
-                  <Avatar className={classes.avatar}>
-                    <PersonIcon />
-                  </Avatar>
-                </ListItemAvatar>
-                <ListItemText primary={email} />
-              </ListItem>
-            )}
-            <ListItem
-              button
-              onClick={() => this.handleListItemClick('addAccount')}
-            >
-              <ListItemAvatar>
-                <Avatar>
-                  <AddIcon />
-                </Avatar>
-              </ListItemAvatar>
-              <ListItemText primary="add account" />
-            </ListItem>
-          </List>
+        <DialogTitle>Save repo</DialogTitle>
+        <div
+          style={{
+            padding: 30,
+            paddingTop: 0,
+          }}
+        >
+          <Input
+            placeholder="Repo url"
+            inputProps={{
+              'aria-label': 'Description',
+            }}
+          />
         </div>
       </Dialog>
     );
@@ -85,10 +68,6 @@ class SimpleDialogDemo extends React.Component {
     selectedValue: emails[1],
   };
 
-  handleRequestClose = value => {
-    this.setState({ selectedValue: value, open: false });
-  };
-
   render() {
     return (
       <div>
@@ -96,17 +75,14 @@ class SimpleDialogDemo extends React.Component {
           Selected: {this.state.selectedValue}
         </Typography>
         <br />
-        <Button disableRipple onClick={() => this.setState({ open: true })}>
-          Open simple dialog
-        </Button>
         <SimpleDialogWrapped
           selectedValue={this.state.selectedValue}
-          open={this.state.open}
-          onRequestClose={this.handleRequestClose}
+          open={this.props.isOpen}
+          onRequestClose={this.props.closeModal}
         />
       </div>
     );
   }
 }
 
-export default SimpleDialogDemo;
+export default compose(connectModal('AddDialog'))(SimpleDialogDemo);
