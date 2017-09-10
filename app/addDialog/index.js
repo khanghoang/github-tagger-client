@@ -14,7 +14,6 @@ import blue from 'material-ui/colors/blue';
 
 import PropTypes from 'prop-types';
 
-const emails = ['username@gmail.com', 'user02@gmail.com'];
 const styles = {
   avatar: {
     background: blue[100],
@@ -115,12 +114,6 @@ const SimpleDialogWrapped = compose(
 )(SimpleDialog);
 
 class SimpleDialogDemo extends React.Component {
-  static defaultProps: {};
-  state = {
-    open: false,
-    selectedValue: emails[1],
-  };
-
   render() {
     return (
       <div>
