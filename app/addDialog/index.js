@@ -88,7 +88,6 @@ class SimpleDialog extends React.Component {
 SimpleDialog.propTypes = {
   classes: PropTypes.object.isRequired,
   onRequestClose: PropTypes.func,
-  selectedValue: PropTypes.string,
 };
 
 const SimpleDialogWrapped = compose(
@@ -117,12 +116,8 @@ class SimpleDialogDemo extends React.Component {
   render() {
     return (
       <div>
-        <Typography type="subheading">
-          Selected: {this.state.selectedValue}
-        </Typography>
         <br />
         <SimpleDialogWrapped
-          selectedValue={this.state.selectedValue}
           open={this.props.isOpen}
           onRequestClose={this.props.closeModal}
         />
